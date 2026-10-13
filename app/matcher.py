@@ -1,4 +1,4 @@
-"""Matcht een vacature tegen het CV met behulp van RAG."""
+"""Match a job vacancy with a CV using RAG."""
 
 import os
 
@@ -14,7 +14,7 @@ client = Mistral(api_key=os.getenv("MISTRAL_API_KEY"))
 CHAT_MODEL = "mistral-small-latest"
 
 
-# ---------- De output-mal ----------
+# ---------- Output schema ----------
 
 class EisBeoordeling(BaseModel):
     eis: str
@@ -32,13 +32,13 @@ class MatchAnalyse(BaseModel):
     samenvatting: str
 
 
-# ---------- De match-logica ----------
+# ---------- Matching logic ----------
 
 def match_vacature(vacature_tekst: str) -> MatchAnalyse:
-    # Stap A: analyseer de vacature (Fase 1 hergebruiken!)
+    # Analyse the vacancy
     vacature = analyseer_vacature(vacature_tekst)
 
-    # Stap B: haal per eis relevante CV-fragmenten op (Fase 2 hergebruiken!)
+    # Retrieve relevant CV passages for each requirement
     store = laad_of_bouw_store()
     cv_context = ""
     for eis in vacature.harde_eisen:
@@ -47,7 +47,7 @@ def match_vacature(vacature_tekst: str) -> MatchAnalyse:
         for r in resultaten:
             cv_context += f"- {r['chunk']}\n"
 
-    # Stap C: alles in één prompt naar het LLM
+    # Send everything to the language model in one prompt.
     prompt = f"""Je bent een carrièreadviseur. Beoordeel of de kandidaat past bij de vacature.
 
 FUNCTIE: {vacature.functietitel}

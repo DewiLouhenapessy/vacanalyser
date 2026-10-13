@@ -7,8 +7,8 @@ from mistralai.client import Mistral
 load_dotenv()
 client = Mistral(api_key=os.getenv("MISTRAL_API_KEY"))
 
-# Dit is een "dataclass": een mal voor hoe ons antwoord eruitziet.
-# Pydantic controleert automatisch of het LLM zich aan de mal houdt!
+# This Pydantic model defines the shape of the response 
+# used to validate the model's output.
 class VacatureAnalyse(BaseModel):
     functietitel: str
     harde_eisen: list[str]
@@ -17,9 +17,7 @@ class VacatureAnalyse(BaseModel):
 
 
 def analyseer_vacature(tekst: str) -> VacatureAnalyse:
-    #Een "prompt" is de opdracht die je het LLM geeft.
-    #Door response_format te gebruiken kan het model alleen
-    #antwoorden in de vorm van onze Pydantic-mal. Heel krachtig!
+    # response_format asks the model to return data matching the Pydantic model.
     return client.chat.parse(
         model="mistral-small-latest",
         messages=[
@@ -35,9 +33,9 @@ def analyseer_vacature(tekst: str) -> VacatureAnalyse:
     ).choices[0].message.parsed
 
 
-# Dit zorgt dat het bestand ook direct uit te voeren is
+# This allows the file to be run directly.
 if __name__ == "__main__":
     test_vacature = """Wij zoeken een Python developer met 3 jaar
     ervaring, kennis van Docker en SQL. Nice to have: AWS."""
     resultaat = analyseer_vacature(test_vacature)
-    print(resultaat.model_dump_json(indent=2))  # print netjes als JSON
+    print(resultaat.model_dump_json(indent=2))  # Print formatted JSON.

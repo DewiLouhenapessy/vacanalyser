@@ -3,10 +3,10 @@
 __pycache__/
 *.pyc
 
-# Geheimen
+# Secrets
 .env
 
-# Gegenereerde artefacten
+# Generated artifacts
 data/cv_store.json
 .pytest_cache/
 
@@ -15,6 +15,6 @@ data/cv_store.json
 .idea/
 .vscode/
 
-# Persoonlijke data
+# Personal data
 data/cv.txt
 data/vacature1.txt

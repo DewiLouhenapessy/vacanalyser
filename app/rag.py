@@ -1,4 +1,4 @@
-"""RAG-module: chunks, embeddings en opslag voor het CV."""
+"""RAG module for chunking, embedding and CV storage."""
 
 import json
 import os
@@ -15,10 +15,10 @@ CV_VOORBEELD_PAD = "data/cv_example.txt"
 STORE_PAD = "data/cv_store.json"
 
 
-# ---------- chunking ----------
+# ---------- Chunking ----------
 
 def maak_chunks(tekst: str, groote: int = 500, overlap: int = 100) -> list[str]:
-    """Knip tekst in overlappende brokken."""
+    """Split text into overlapping chunks."""
     chunks: list[str] = []
     start = 0
     while start < len(tekst):
@@ -32,10 +32,10 @@ def maak_chunks(tekst: str, groote: int = 500, overlap: int = 100) -> list[str]:
     return chunks
 
 
-# ---------- embedding ----------
+# ---------- Embedding ----------
 
 def maak_embeddings(chunks: list[str]) -> list[list[float]]:
-    """Stuur alle chunks naar Mistral en krijg per chunk een vector terug."""
+    """Send chunks to Mistral and return an embedding for each one."""
     antwoord = client.embeddings.create(
         model=EMBED_MODEL,
         inputs=chunks,
@@ -44,7 +44,7 @@ def maak_embeddings(chunks: list[str]) -> list[list[float]]:
 
 
 def bouw_cv_store(chunks: list[str], pad: str = STORE_PAD) -> None:
-    """Embed de chunks en sla alles op in een JSON-bestand."""
+    """Embed the chunks and save them to a JSON file."""
     print(f"Embedding van {len(chunks)} chunks...")
     vectoren = maak_embeddings(chunks)
 
@@ -57,10 +57,10 @@ def bouw_cv_store(chunks: list[str], pad: str = STORE_PAD) -> None:
     print(f"Opslag klaar: {len(store)} chunks in {pad}")
 
 
-# ---------- retrieval ----------
+# ---------- Retrieval ----------
 
 def cosine_gelijkheid(a: list[float], b: list[float]) -> float:
-    """Hoeveel wijzen twee vectoren dezelfde kant op? (1.0 = identiek)"""
+    """Measure how closely two vectors point in the same direction (1.0 = identical)."""
     teller = sum(x * y for x, y in zip(a, b))
     lengte_a = sum(x * x for x in a) ** 0.5
     lengte_b = sum(y * y for y in b) ** 0.5
@@ -68,13 +68,13 @@ def cosine_gelijkheid(a: list[float], b: list[float]) -> float:
 
 
 def laad_store(pad: str = STORE_PAD) -> list[dict]:
-    """Lees de gebakken chunks + vectoren terug van schijf."""
+    """Load the stored chunks and vectors from disk."""
     with open(pad, encoding="utf-8") as bestand:
         return json.load(bestand)
 
 
 def laad_of_bouw_store() -> list[dict]:
-    """Laad de CV-store of bouw hem met de beschikbare CV-tekst."""
+    """Load the CV store or build it from the available CV text."""
     if not os.path.exists(STORE_PAD):
         cv_pad = CV_PAD if os.path.exists(CV_PAD) else CV_VOORBEELD_PAD
         with open(cv_pad, encoding="utf-8") as bestand:
@@ -85,7 +85,7 @@ def laad_of_bouw_store() -> list[dict]:
 
 
 def zoek(zoektekst: str, store: list[dict], top: int = 3) -> list[dict]:
-    """Vind de chunks die het meest lijken op de zoektekst."""
+    """Find the chunks most similar to the search text."""
     vraag_vector = maak_embeddings([zoektekst])[0]
 
     gescoord = []
@@ -97,7 +97,7 @@ def zoek(zoektekst: str, store: list[dict], top: int = 3) -> list[dict]:
     return gescoord[:top]
 
 
-# ---------- execution ----------
+# ---------- Execution ----------
 
 if __name__ == "__main__":
     import sys
