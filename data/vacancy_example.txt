@@ -1,0 +1,38 @@
+Junior Python Developer — Dataplein B.V.
+Locatie: Utrecht (hybride, 2 dagen op kantoor)
+Type: 32-40 uur per week
+
+OVER DE ORGANISATIE
+Dataplein helpt overheidsorganisaties hun data toegankelijk te maken. Ons team van
+ acht ontwikkelt open-source tools waarmee datasets vindbaar, herbruikbaar en
+controleerbaar worden. We werken volgens open-science-principes: alle code is
+publiek en documentatie staat voorop.
+
+WAT JE GAAT DOEN
+- Je bouwt Python-tools die datasets ontsluiten en documenteert ze zodanig dat
+  collega's en gebruikers ze zelf kunnen herzien en hergebruiken
+- Je werkt aan de koppeling tussen onze tools en open-source AI-modellen, denk aan
+  zoeken op betekenis (semantic search) in grote tekstcollecties
+- Je schrijft tests en zorgt dat pipelines reproduceerbaar blijven
+- Je werkt in een multidisciplinair team met data-specialisten, ontwerpers en
+  beheerders
+
+WAT WE VRAGEN
+- Minimaal 1 jaar ervaring met Python in de praktijk, bij voorkeur met pandas
+  of vergelijkbare libraries
+- Ervaring met SQL en het werken met (semi-)gestructureerde data
+- Kennis van Git-based workflows en code review
+- Basiskennis van Docker en CI/CD-pipelines
+- Affiniteit met AI/NLP: je hoeft geen model te trainen, maar begrijpt hoe
+  embeddings en taalmodellen praktisch ingezet kunnen worden
+- Het gevoel voor privacy en ethisch dataverwerken dat bij publieke data hoort
+- Woont in de regio Utrecht of is bereid twee dagen per week op kantoor te werken
+
+WAT WE BIEDEN
+- Ruimte om te leren: tijd en budget voor opleiding en conferenties
+- Betekenisvol werk aan open-source software met direct maatschappelijke impact
+- Een team dat nieuwsgierig is, prototyping aanmoedigt en fouten als leermoment ziet
+
+SOLICITEREN
+Stuur je cv en een korte motivering naar solliciteren@dataplein-voorbeeld.nl.
+Een GitHub-profiel of voorbeeldproject zijn meer dan welkom.

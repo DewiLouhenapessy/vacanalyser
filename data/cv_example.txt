@@ -1,0 +1,41 @@
+Voorbeeld Persoon
+Junior Python Developer
+Ons Dorp, Nederland
+voorbeeld.persoon@voorbeeld.nl | 06-12345678 | linkedin.com/in/persoon-voorbeeld | github.com/voorbeeldpersoon
+
+PROFIELD
+Startende softwaredeveloper met een achtergrond in biowetenschappen. Werkt het liefst
+aan tools die data vindbaar en herbruikbaar maken. Op zoek naar een functie waarin
+Python, data en automatisering samenkomen.
+
+WERKERVARING
+
+Data-analist (interim) — Provincie Utrecht
+maart 2025 – heden
+- Bouwde Python-scripts (pandas) die maandelijkse rapportages van twee dagen werk
+  naar twee uur terugbrachten
+- Zamet openbare datasets in en documenteert de verwerkingsstappen zodat collega's
+  de pipelines kunnen herhalen
+- Werkt met GitLab voor versiebeheer en code review binnen een team van vier
+
+Stagiair softwareontwikkeling — Kennislab Voorbeeld B.V.
+september 2024 – februari 2025
+- Ontwikkelde een interne zoekfunctie in Python (Flask) voor een documentarchief
+  van ruim 12.000 documenten
+- Schreef geautomatiseerde tests (pytest) en hield de dekking boven de 80%
+- Presenteerde resultaten aan niet-technische collega's en verwerkte feedback
+
+OPLEDING
+HBO Data Science — Hogeschool Voorbeeld (2021 – 2025, cum laude)
+Afstudeerproject: tekstclassificatie van klantfeedback met open-source NLP-modellen
+
+TECHNISCHE VAARDIGHEDEN
+- Programmeertalen: Python (pandas, Flask, pytest), SQL, basis JavaScript
+- Tooling: Git, GitLab CI, Docker (basis), Linux
+- Data & AI: NLP-basics, embeddings, werken met open-source taalmodellen
+
+TALEN
+- Nederlands (moedertaal), Engels (C1)
+
+NEVENACTIVITEITEN
+- Vrijwilliger bij lokale coderdojo: begeleid jongeren met hun eerste Python-stappen

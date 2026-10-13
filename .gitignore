@@ -1,0 +1,20 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Geheimen
+.env
+
+# Gegenereerde artefacten
+data/cv_store.json
+.pytest_cache/
+
+# Editor & OS
+.DS_Store
+.idea/
+.vscode/
+
+# Persoonlijke data
+data/cv.txt
+data/vacature1.txt
