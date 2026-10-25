@@ -1,19 +1,11 @@
 import os
 from dotenv import load_dotenv
-from pydantic import BaseModel
+from app.models import VacatureAnalyse
 from mistralai.client import Mistral
 
 # Load API-key from .env
 load_dotenv()
 client = Mistral(api_key=os.getenv("MISTRAL_API_KEY"))
-
-# This Pydantic model defines the shape of the response 
-# used to validate the model's output.
-class VacatureAnalyse(BaseModel):
-    functietitel: str
-    harde_eisen: list[str]
-    nice_to_haves: list[str]
-    trefwoorden: list[str]
 
 
 def analyseer_vacature(tekst: str) -> VacatureAnalyse:

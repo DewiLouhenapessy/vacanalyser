@@ -3,7 +3,7 @@
 import os
 
 from dotenv import load_dotenv
-from pydantic import BaseModel
+from app.models import MatchAnalyse
 from mistralai.client import Mistral
 
 from app.analyser import analyseer_vacature
@@ -12,24 +12,6 @@ from app.rag import laad_of_bouw_store, zoek
 load_dotenv()
 client = Mistral(api_key=os.getenv("MISTRAL_API_KEY"))
 CHAT_MODEL = "mistral-small-latest"
-
-
-# ---------- Output schema ----------
-
-class EisBeoordeling(BaseModel):
-    eis: str
-    gevonden_in_cv: bool
-    onderbouwing: str
-    toelichting: str
-
-
-class MatchAnalyse(BaseModel):
-    functietitel: str
-    match_percentage: int
-    sterke_punten: list[str]
-    verbeterpunten: list[str]
-    eisen: list[EisBeoordeling]
-    samenvatting: str
 
 
 # ---------- Matching logic ----------
